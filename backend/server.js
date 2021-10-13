@@ -4,6 +4,7 @@ import express from 'express';
 // const dotenv = require('dotenv');
 import dotenv from 'dotenv';
 
+import colors from 'colors';
 import connectDB from './config/db.js';
 
 // const products = require('./data/products');
@@ -39,4 +40,4 @@ app.get('/api/products/:id', (req, res) => {
 const PORT = 5000;
 // console.log(process.env.PORT);
 
-app.listen(PORT, console.log(`Server is running in ${process.env.NODE_ENV} on port ${PORT}`));
+app.listen(PORT, console.log(`Server is running in ${process.env.NODE_ENV} on port ${PORT}`.yellow.bold));
