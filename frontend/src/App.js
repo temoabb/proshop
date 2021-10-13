@@ -1,20 +1,23 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+import AppRouter from './router';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { Container } from 'react-bootstrap';
-import HomePage from './pages/HomePage';
+
 
 const App = () => {
   return (
-    <React.Fragment>
+    <Router>
       <Header />
       <main className="py-3">
         <Container>
-          <HomePage />
+          <AppRouter />
         </Container>
       </main>
       <Footer />
-    </React.Fragment>
+    </Router>
   )
 };
 
