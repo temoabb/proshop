@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 
 import Rating from '../components/Rating';
-import products from '../products';
-
 
 const SingleProductDetailsPage = () => {
   const { id } = useParams();
-  const product = products.find(p => p._id === id);
-  console.log('product', product)
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    axios.get(`/api/products/${id}`)
+      .then(res => {
+        console.log(res.data);
+        setProduct(res.data)
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+  console.log('rating', product.rating)
+  console.log('text', product.text)
+
+
+  // const product = products.find(p => p._id === id);
+  // console.log('product', product)
 
   return (
     <React.Fragment>

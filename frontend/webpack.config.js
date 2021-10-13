@@ -55,9 +55,9 @@ module.exports = {
 
   devServer: {
     historyApiFallback: true, // this have to be true, if you ever running into the issues like react-router-dom
-    port: 5000,
+    port: 3000,
     proxy: {
-      '/api': 'http://localhost:7070'
+      '/api': 'http://localhost:5000'
     },
   }
 }
