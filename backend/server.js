@@ -1,12 +1,15 @@
 import express from 'express';  // const express = require('express');
 import dotenv from 'dotenv';  // const dotenv = require('dotenv');
+
 import connectDB from './config/db.js';
-import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-import colors from 'colors';
 
 import productRoutes from './routes/productRoutes.js';
 
-dotenv.config();
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import colors from 'colors';
+
+
+dotenv.config(); // with connectDB() ?
 connectDB();
 
 const app = express();
@@ -16,9 +19,10 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/products', productRoutes);
-
 app.use(notFound);
 app.use(errorHandler);
+
+
 
 const PORT = 5000;
 app.listen(PORT, console.log(`Server is running in ${process.env.NODE_ENV} on port ${PORT}`.yellow.bold));
