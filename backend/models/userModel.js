@@ -1,6 +1,4 @@
-import { timeStamp } from 'console';
 import mongoose from 'mongoose';
-
 
 const userSchema = mongoose.Schema({
   name: {
@@ -19,10 +17,10 @@ const userSchema = mongoose.Schema({
   isAdmin: {
     type: Boolean,
     required: true,
-    default: false,
+    default: false, //  an admin will have to make another user in admin
   },
 }, {
-  timeStamps: true
+  timestamps: true
 });
 
 

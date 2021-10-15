@@ -1,6 +1,4 @@
-import { timeStamp } from 'console';
 import mongoose from 'mongoose';
-
 
 const orderSchema = mongoose.Schema({
   user: {
@@ -11,7 +9,7 @@ const orderSchema = mongoose.Schema({
   orderItems: [
     {
       name: { type: String, required: true },
-      qty: { type: Number, required: true },
+      qty: { type: Number, required: true }, // quantity
       image: { type: String, required: true },
       price: { type: Number, required: true },
       product: {
@@ -28,10 +26,10 @@ const orderSchema = mongoose.Schema({
     country: { type: String, required: true },
   },
   paymentMethod: {
-    type: Boolean,
+    type: String,
     required: true,
   },
-  paymentResult: {
+  paymentResult: { // data back from paypol
     id: { type: String },
     status: { type: String },
     update_time: { type: String },
@@ -71,7 +69,6 @@ const orderSchema = mongoose.Schema({
 }, {
   timeStamps: true
 });
-
 
 const Order = mongoose.model('Order', orderSchema);
 

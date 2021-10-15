@@ -1,26 +1,19 @@
 import mongoose from 'mongoose';
 
-const reviewSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true
+const reviewSchema = mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    rating: { type: Number, required: true }, // average rating of all reviews
+    comment: { type: String, required: true },
   },
-  rating: {
-    type: Number,
-    required: true
-  },
-  comment: {
-    type: String,
-    required: true
-  },
-}, {
-  timestamps: true
-});
+  {
+    timestamps: true
+  });
 
 
 const productSchema = mongoose.Schema({
 
-  // which admin:
+  // only admin can create a product and we wonder which user, e.i. which admin is creating a product
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -53,10 +46,6 @@ const productSchema = mongoose.Schema({
     default: 0
   },
   numReviews: {
-    type: String,
-    required: true,
-  },
-  numReviews: {
     type: Number,
     required: true,
     default: 0
@@ -74,7 +63,6 @@ const productSchema = mongoose.Schema({
 }, {
   timeStamps: true
 });
-
 
 const Product = mongoose.model('Product', productSchema);
 
