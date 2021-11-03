@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react';
+
+// react-redux
 import { useSelector, useDispatch } from 'react-redux';
 
+// bootstrap
 import { Row, Col } from 'react-bootstrap';
-import ProductCard from '../components/ProductCard';
+
+// actions
 import { listProducts } from '../actions/productActions';
 
+// components
+import ProductCard from '../components/ProductCard';
+
+// UI
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 
