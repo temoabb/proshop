@@ -20,8 +20,8 @@ const SingleProductDetailsPage = () => {
       .catch(err => console.log(err))
   }, [])
 
-  console.log('rating', product.rating)
-  console.log('text', product.text)
+  // console.log('rating', product.rating)
+  // console.log('text', product.text)
 
 
   // const product = products.find(p => p._id === id);
@@ -77,9 +77,11 @@ const SingleProductDetailsPage = () => {
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button disabled={product.countInStock === 0} className="btn-block" type="button">
-                  Add to cart
-                </Button>
+                <Row>
+                  <Button disabled={product.countInStock === 0} className="btn-block" type="button">
+                    Add to cart
+                  </Button>
+                </Row>
               </ListGroup.Item>
             </ListGroup>
           </Card>
