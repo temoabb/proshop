@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import SingleProductDetailsPage from './pages/SingleProductDetailsPage';
+import CartPage from './pages/CartPage';
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
     path: '/product/:id',
     component: SingleProductDetailsPage,
     _id: "r3"
+  },
+  {
+    path: '/cart/:id?',
+    component: CartPage,
+    _id: "r4"
   }
 ]
 
