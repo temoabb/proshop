@@ -9,6 +9,8 @@ import { addToCart } from '../actions/cartActions';
 
 const CartPage = ({ match, location, history }) => {
   const dispatch = useDispatch();
+  const cart = useSelector(state => state.cart);
+  const { cartItems } = cart;
 
   const productId = match.params.id; // for ex: 6169373cc36aa100fde842d7
   // const { search } = useLocation(); // same as location.search;
