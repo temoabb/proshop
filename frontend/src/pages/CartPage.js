@@ -14,9 +14,9 @@ const CartPage = ({ match, location, history }) => {
   const { cartItems } = cart;
 
   const productId = match.params.id; // for ex: 6169373cc36aa100fde842d7
-  // const { search } = useLocation(); // same as location.search;
 
-  const quantity = location.search ? Number(location.search.split("=")[1]) : 1; // ?qty=7 : after split ["?qty", "7"]
+  const quantity = location.search ? Number(location.search.split("=")[1]) : 1; // ?qty=7 > ["?qty", "7"]
+  // const { search } = useLocation(); // same as location.search;
 
   useEffect(() => {
     console.log('effect CartPage');
