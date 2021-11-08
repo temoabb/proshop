@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
-// We do not need _id here. 
-// When data is entered into mongodb, it autiomatically creates an _id fields.
+// We do not need _id here. When data is entered into mongodb, it autiomatically creates an _id fields.
 
 const users = [
   {

@@ -18,7 +18,6 @@ connectDB();
 
 const importData = async () => {
   try {
-    //  clear all collections completely: 
     await Order.deleteMany(); // here we do not pass anything between ( ). It means that it deletes everything
     await Product.deleteMany();
     await User.deleteMany();
@@ -26,12 +25,9 @@ const importData = async () => {
     const createdUsers = await User.insertMany(users);
 
     const adminUser = createdUsers[0]._id
-    // in users.js first element is Admin User obj. So we use [0]._id here
-    // Also remember when data is entered into mongodb, it autiomatically creates an _id fields.
+    // in users.js first element is Admin User obj. So we use [0]._id here. Also remember when data is entered into mongodb, it autiomatically creates an _id fields.
 
-    const sampleProducts = products.map(product => {
-      return { ...product, user: adminUser }
-    })
+    const sampleProducts = products.map(product => ({ ...product, user: adminUser }));
 
     await Product.insertMany(sampleProducts);
 

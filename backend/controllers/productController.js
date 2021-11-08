@@ -1,11 +1,13 @@
 import Product from '../models/productModel.js';
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
-
-const all_products = (req, res) => {
-  Product.find()
-    .then(results => res.json(results))
-    .catch(err => console.log(err))
+const all_products = async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.json(products);
+  } catch (err) {
+    console.log(err)
+  }
 };
 
 const single_product = async (req, res, next) => {

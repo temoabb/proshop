@@ -1,9 +1,10 @@
 import express from 'express';
 const router = express.Router();
 
-import * as productControllers from '../controllers/productController.js';
+import { all_products, single_product } from '../controllers/productController.js';
 
-router.get('/', productControllers.all_products); // <--  /api/products/
-router.get('/:id', productControllers.single_product); // <--  /api/products/:id
+router.get('/', all_products); // <--  /api/products
+router.get('/:id', single_product); // <-- /api/products/  /api/products/:id
 
-export default router; // imported in 'server.js' as 'productRoutes'
+export default router;
+// imported in 'server.js' as 'productRoutes'
