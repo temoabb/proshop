@@ -11,6 +11,7 @@ import { login } from '../actions/userActions';
 
 
 const LoginPage = ({ location, history }) => {
+  console.log('LoginPage');
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,10 +23,14 @@ const LoginPage = ({ location, history }) => {
   console.log(loading, error, userInfo);
   const redirect = location.search ? location.search.split("=")[1] : '/';
 
-  console.log(location);
+  // console.log(location);
 
   useEffect(() => {
-    if (userInfo) history.push(redirect)
+    console.log('loginPage effect');
+    if (userInfo) {
+      console.log(`loginPage effect > We have got userInfo, so we'll redirect to ${redirect}`);
+      history.push(redirect);
+    }
   }, [history, userInfo, redirect]);
 
 
