@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import SingleProductDetailsPage from './pages/SingleProductDetailsPage';
 import CartPage from './pages/CartPage';
+import LoginPage from './pages/LoginPage';
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
     path: '/cart/:id?',
     component: CartPage,
     _id: "r4"
+  },
+  {
+    path: '/login',
+    component: LoginPage,
+    _id: "r5",
   }
 ]
 

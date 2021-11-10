@@ -6,7 +6,7 @@ import generateToken from '../utils/generateToken.js';
 // POST /api/users/login
 // Public 
 
-const authUser = async (req, res) => {
+const authUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
@@ -24,7 +24,7 @@ const authUser = async (req, res) => {
       throw new Error('Invalid email or password');
     }
   } catch (err) {
-    console.log('in error', err);
+    next(err);
   }
 };
 
