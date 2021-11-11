@@ -20,24 +20,16 @@ const LoginPage = ({ location, history }) => {
   const userLogin = useSelector(state => state.userLogin);
 
   const { loading, error, userInfo } = userLogin;
-  console.log(loading, error, userInfo);
   const redirect = location.search ? location.search.split("=")[1] : '/';
 
-  // console.log(location);
-
   useEffect(() => {
-    console.log('loginPage effect');
     if (userInfo) {
-      console.log(`loginPage effect > We have got userInfo, so we'll redirect to ${redirect}`);
       history.push(redirect);
     }
   }, [history, userInfo, redirect]);
 
-
   const submitHandler = (e) => {
     e.preventDefault();
-
-    // DISPATCH LOGIN
     dispatch(login(email, password));
   };
 

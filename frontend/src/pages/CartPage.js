@@ -6,9 +6,9 @@ import { addToCart, removeFromCart } from '../actions/cartActions';
 
 import Message from '../components/Message';
 
-
 const CartPage = ({ match, location, history }) => {
-  console.log('rerender CartPage')
+  console.log('rerender CartPage');
+
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
   const { cartItems } = cart;
@@ -16,11 +16,14 @@ const CartPage = ({ match, location, history }) => {
   const productId = match.params.id; // for ex: 6169373cc36aa100fde842d7
 
   const quantity = location.search ? Number(location.search.split("=")[1]) : 1; // ?qty=7 > ["?qty", "7"]
-  // const { search } = useLocation(); // same as location.search;
 
   useEffect(() => {
     console.log('effect CartPage');
-    if (productId) dispatch(addToCart(productId, quantity));
+
+    if (productId) {
+      dispatch(addToCart(productId, quantity))
+    };
+
   }, [dispatch, productId, quantity])
 
   const removeFromCartHandler = (id) => dispatch(removeFromCart(id));

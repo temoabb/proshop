@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import SingleProductDetailsPage from './pages/SingleProductDetailsPage';
 import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 const routes = [
   {
@@ -32,8 +33,13 @@ const routes = [
     path: '/login',
     component: LoginPage,
     _id: "r5",
+  },
+  {
+    path: '/register',
+    component: RegisterPage,
+    _id: "r6",
   }
-]
+];
 
 const AppRouter = () => {
   return (

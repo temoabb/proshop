@@ -72,7 +72,7 @@ const registerUser = async (req, res, next) => {
 
 // GET user profile
 // GET /api/users/profile
-// Private
+// Private (need to send token)
 
 const getUserProfile = async (req, res, next) => {
   console.log(req.user);
@@ -92,7 +92,39 @@ const getUserProfile = async (req, res, next) => {
 };
 
 
+// Update user profile
+// GET Put /api/users/profile
+// Private (need to send token)
+
+const updateUserProfile = async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      token: generateToken(updatedUser._id),
+    })
+
+  } else {
+    res.status(404);
+    return next();
+  }
+};
 
 
 
-export { authUser, getUserProfile, registerUser };
+
+
+export { authUser, getUserProfile, registerUser, updateUserProfile };
