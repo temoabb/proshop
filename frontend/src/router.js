@@ -6,6 +6,7 @@ import SingleProductDetailsPage from './pages/SingleProductDetailsPage';
 import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage';
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/register',
     component: RegisterPage,
     _id: "r6",
+  },
+  {
+    path: '/profile',
+    component: ProfilePage,
+    _id: "r7",
   }
 ];
 
