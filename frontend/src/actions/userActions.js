@@ -10,7 +10,9 @@ import {
   USER_LOGOUT,
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
-  USER_REGISTER_SUCCESS
+  USER_REGISTER_SUCCESS,
+  USER_UPDATE_PROFILE_REQUEST,
+  USER_UPDATE_PROFILE_SUCCESS
 } from "../constants/userConstants"
 
 
@@ -107,6 +109,36 @@ export const getUserDetails = id => async (dispatch, getState) => {
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
+      payload: data
+    })
+
+  } catch (error) {
+    dispatch({
+      type: USER_DETAILS_FAIL,
+      payload: error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    })
+  }
+};
+
+
+export const updateUserProfile = user => async (dispatch, getState) => {
+  try {
+    const { userLogin: { userInfo } } = getState(); // getState is a function
+    dispatch({ type: USER_UPDATE_PROFILE_REQUEST });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${userInfo.token}`,
+      }
+    };
+
+    const { data } = await axios.put(`/api/users/profile`, user, config); // user is a data we want to save
+    console.log('data', data);
+
+    dispatch({
+      type: USER_UPDATE_PROFILE_SUCCESS,
       payload: data
     })
 
