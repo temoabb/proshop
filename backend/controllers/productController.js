@@ -12,12 +12,11 @@ const all_products = async (req, res) => {
 
 const single_product = async (req, res, next) => {
   try {
-    const product = await Product.findById(new mongoose.Types.ObjectId(req.params.id));
+    const product = await Product.findById(new mongoose.Types.ObjectId(req.params.id)); // Why not just Product.findById(req.params.id)?
     if (product) {
-      res.json(product)
+      res.json(product);
     } else {
-      // res.status(404)
-      next()
+      next();
     }
   } catch (error) {
     next(error)

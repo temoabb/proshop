@@ -13,8 +13,9 @@ const app = express();
 connectDB();
 
 app.use(express.json());
+app.get('/', (req, res) => res.send('API is running....'));
 
-app.get('/', (req, res) => res.send('API is running....')); // res.send or res.json is going to convert something on json type:})
+
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 

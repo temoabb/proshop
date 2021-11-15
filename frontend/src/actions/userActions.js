@@ -59,10 +59,11 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const logouot = () => (dispatch) => {
+export const logout = () => (dispatch) => {
   localStorage.removeItem('userInfo');
   dispatch({ type: USER_LOGOUT });
 };
+
 
 export const register = (name, email, password) => async dispatch => {
   try {
@@ -72,12 +73,9 @@ export const register = (name, email, password) => async dispatch => {
         "Content-Type": "application/json"
       }
     };
-
     const { data } = await axios.post('/api/users', { name, email, password }, config);
-
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
@@ -88,30 +86,23 @@ export const register = (name, email, password) => async dispatch => {
   }
 };
 
+
+
 export const getUserDetails = id => async (dispatch, getState) => {
   try {
-    const { userLogin: { userInfo } } = getState(); // getState is a function
-    console.log('userInfo.token', userInfo.token);
-
-    dispatch({
-      type: USER_DETAILS_REQUEST
-    })
-
+    const { userLogin: { userInfo } } = getState();
+    dispatch({ type: USER_DETAILS_REQUEST });
     const config = {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${userInfo.token}`,
       }
     };
-
     const { data } = await axios.get(`/api/users/${id}`, config);
-    console.log('data', data);
-
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data
     })
-
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAIL,

@@ -7,6 +7,9 @@ import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
+import ShippingPage from './pages/ShippingPage';
+import PaymentPage from './pages/PaymentPage';
+import PlaceOrderPage from './pages/PlaceOrderPage';
 
 const routes = [
   {
@@ -44,6 +47,21 @@ const routes = [
     path: '/profile',
     component: ProfilePage,
     _id: "r7",
+  },
+  {
+    path: '/shipping',
+    component: ShippingPage,
+    _id: "r8"
+  },
+  {
+    path: '/payment',
+    component: PaymentPage,
+    _id: "r9",
+  },
+  {
+    path: '/placeorder',
+    component: PlaceOrderPage,
+    _id: 'r10',
   }
 ];
 

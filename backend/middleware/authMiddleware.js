@@ -35,9 +35,3 @@ const protect = async (req, res, next) => {
 };
 
 export { protect };
-
-
-// if () {}
-// if () {}
-// if () {}
-// if () {}

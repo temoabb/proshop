@@ -5,8 +5,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 
-
-const ProfilePage = ({ location, history }) => {
+const ProfilePage = ({ history }) => {
   console.log('ProfilePage');
 
   const [email, setEmail] = useState('');
@@ -26,15 +25,15 @@ const ProfilePage = ({ location, history }) => {
   const userUpdateProfile = useSelector(state => state.userUpdateProfile);
   const { success } = userUpdateProfile;
 
+
   useEffect(() => {
-    console.log('useEffect ProfilePage');
-    console.log('userInfo', userInfo);
+    console.log('useEffect ProfilePage >', 'userInfo >', userInfo);
 
     if (!userInfo) {
       history.push('/login');
     } else {
       if (!user.name) {
-        console.log('here')
+        // console.log('here')
         dispatch(getUserDetails('profile'));
       } else {
         setName(user.name);
@@ -42,6 +41,7 @@ const ProfilePage = ({ location, history }) => {
       }
     }
   }, [dispatch, history, userInfo, user]);
+
 
 
   const submitHandler = (e) => {
