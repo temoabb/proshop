@@ -1,18 +1,22 @@
 import axios from "axios";
-
 import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
+
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
+
   USER_LOGOUT,
+
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+
   USER_UPDATE_PROFILE_REQUEST,
   USER_UPDATE_PROFILE_SUCCESS
+
 } from "../constants/userConstants"
 
 
@@ -31,7 +35,6 @@ export const login = (email, password) => async (dispatch) => {
     }
 
     const { data } = await axios.post('/api/users/login', { email, password }, config); // ./userControllers/authUser
-    console.log('data', data);
 
     // above returns this:
     // res.json({
@@ -76,6 +79,7 @@ export const register = (name, email, password) => async dispatch => {
     const { data } = await axios.post('/api/users', { name, email, password }, config);
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
@@ -85,8 +89,6 @@ export const register = (name, email, password) => async dispatch => {
     })
   }
 };
-
-
 
 export const getUserDetails = id => async (dispatch, getState) => {
   try {

@@ -20,9 +20,11 @@ const LoginPage = ({ location, history }) => {
   const userLogin = useSelector(state => state.userLogin);
 
   const { loading, error, userInfo } = userLogin;
+  console.log('location.search', location.search);
   const redirect = location.search ? location.search.split("=")[1] : '/';
 
   useEffect(() => {
+    console.log(userInfo);
     if (userInfo) {
       history.push(redirect);
     }

@@ -54,7 +54,7 @@ const CartPage = ({ match, location, history }) => {
                     <Col md={2}>
                       <Form.Control
                         as="select"
-                        value={item.quantity}
+                        value={item.qty}
                         onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
                       >
                         {
@@ -81,9 +81,9 @@ const CartPage = ({ match, location, history }) => {
         <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.quantity, 0)}) items</h2>
+              <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
               ${cartItems
-                .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                .reduce((acc, item) => acc + item.price * item.qty, 0)
                 .toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>
